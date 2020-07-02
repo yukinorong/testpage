@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取随机数或字母</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+
+</head>
+<body>
+    <div>
+        <select>
+            <option value="word">字母</option>
+            <!-- <option value="num">数字</option> -->
+        </select>
+        <form action="">
+            生成数量: <input type="text" value="" id="num">
+            <!-- <input type="submit" value="生成"> -->
+            <button type="button" onclick="getWordRandom()">生成</button>
+        </form>
+        <textarea rows="3" cols="20" id="answer">
+            
+        </textarea>
+    </div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <h4>关注图南 ↓ </h4>
+    <div>
+        <a href="https://blog.csdn.net/yukinorong">图南的csdn</a>
+    </div>
+    <div>
+        <a href="https://github.com/yukinorong">图南的github</a>
+    </div>
+    <div>
+        <a href="https://yukinorong.github.io">个人博客主页</a>
+    </div>
+</body>
+
+<script>
+    function getWordRandom(){
+        var num = $("#num").val()
+        var word = ""
+        for (i = 0; i < num; i++){
+            word += String.fromCharCode(getRandom(65, 90))
+        }
+        $("#answer").val(word)
+    }
+
+    // 获得字母为65-90
+    function getRandom(min, max){
+        var num = Math.floor(Math.random()*(max - min + 1)) + min;
+        return num
+    }
+
+</script>
+</html>
