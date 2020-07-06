@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!-- vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+
+        <!-- <div v-html="header"></div> -->
+
+<!--         <template v-for="a in article">
+            <h2>{{a.title}}</h2>
+            <p>{{a.word}}</p>
+        </template> -->
+        <blog-block v-for="a in article" v-bind:title="a.title" v-bind:word="a.word"></blog-block>
+    
+        <blog-post title="My journey with Vue"></blog-post>
+    </div>
+    
+</body>
+<script>
+
+    Vue.component('blog-block', {
+        props:['title','word'],
+        template:'<div><h2>{{title}}</h2> <p>{{word}}</p></div>'
+    })
+    var data = {
+        a:'haha',
+        header:'<div id="app">{{a}}</div>',
+
+    }
+
+new Vue({
+        el: '#app',
+        data : {
+            article:[
+                {title:'123',word:'123123'},
+                {title:'456',word:'123123'},
+                {title:'789',word:'123123'},
+
+            ]
+        }
+    })
+
+</script>
+</html>

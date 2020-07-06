@@ -4,24 +4,38 @@
     <meta charset="UTF-8">
     <title>获取随机数或字母</title>
     <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 <body>
+    <div class="container">
+        <div class="row">
+            
     <div>
-        <select>
+        <select class="form-control">
             <option value="word">字母</option>
-            <!-- <option value="num">数字</option> -->
+            <option value="word">数字</option>
         </select>
+
         <form action="">
-            生成数量: <input type="text" value="" id="num">
+            生成数量: <input type="text" value="" id="num1">
             <!-- <input type="submit" value="生成"> -->
             <button type="button" onclick="getWordRandom()">生成</button>
         </form>
-        <textarea rows="3" cols="20" id="answer">
+        <textarea rows="3" cols="20" id="answer1">
+            
+        </textarea>
+
+        <form action="">
+            生成数量: <input type="text" value="" id="num2">
+            <!-- <input type="submit" value="生成"> -->
+            <button type="button" onclick="getDiffWordRandom()">生成</button>
+        </form>
+        <textarea rows="3" cols="20" id="answer2">
             
         </textarea>
     </div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         <h4>关注图南 ↓ </h4>
     <div>
         <a href="https://blog.csdn.net/yukinorong">图南的csdn</a>
@@ -36,12 +50,27 @@
 
 <script>
     function getWordRandom(){
-        var num = $("#num").val()
+        var num = $("#num1").val()
         var word = ""
         for (i = 0; i < num; i++){
             word += String.fromCharCode(getRandom(65, 90))
         }
-        $("#answer").val(word)
+        $("#answer1").val(word)
+    }
+
+    function getDiffWordRandom(){
+        var num = $("#num2").val()
+        var word = ""
+        var wordlist = []
+        // var temp = []
+        for (i = 0; i < num; i++){
+            getDifferentRandom(65,90,wordlist)
+        }
+        for (i = 0; i < wordlist.length; i++){
+            word += String.fromCharCode(wordlist[i])
+        }
+
+        $("#answer2").val(word)
     }
 
     // 获得字母为65-90
@@ -50,5 +79,16 @@
         return num
     }
 
+    //获得不重复 随机数
+    function getDifferentRandom(min, max, list){
+        if(list.length >= (max - min + 1))
+            return [-1, list]
+        var num = Math.floor(Math.random()*(max - min + 1)) + min;
+        while(list.indexOf(num) >= 0){
+            num = Math.floor(Math.random()*(max - min + 1)) + min;
+        }
+        list.push(num)
+        return [num, list]
+    }
 </script>
 </html>
