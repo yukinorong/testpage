@@ -10,41 +10,52 @@
 <body>
     <div class="container">
         <div class="row">
-            
-    <div>
-        <select class="form-control">
-            <option value="word">字母</option>
-            <option value="word">数字</option>
-        </select>
+            <div class="col-sm-6">
+                <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    字母
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="#">字母</a></li>
+                    <li><a href="#">数字</a></li>
 
-        <form action="">
-            生成数量: <input type="text" value="" id="num1">
-            <!-- <input type="submit" value="生成"> -->
-            <button type="button" onclick="getWordRandom()">生成</button>
-        </form>
-        <textarea rows="3" cols="20" id="answer1">
-            
-        </textarea>
+                  </ul>
+                </div>
 
-        <form action="">
-            生成数量: <input type="text" value="" id="num2">
-            <!-- <input type="submit" value="生成"> -->
-            <button type="button" onclick="getDiffWordRandom()">生成</button>
-        </form>
-        <textarea rows="3" cols="20" id="answer2">
-            
-        </textarea>
-    </div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-        <h4>关注图南 ↓ </h4>
-    <div>
-        <a href="https://blog.csdn.net/yukinorong">图南的csdn</a>
-    </div>
-    <div>
-        <a href="https://github.com/yukinorong">图南的github</a>
-    </div>
-    <div>
-        <a href="https://yukinorong.github.io">个人博客主页</a>
+                <form>
+                    <div class="form-group">
+                        <label for="info">生成随机字母:</label>
+                        <input type="text" class="form-control" id="num1" placeholder="生成数量">
+                        <label for="info">结果:</label>
+                        <input type="text" class="form-control" id="answer1" placeholder="">
+                    </div>
+                    <button type="button" class="btn btn-default" onclick="getWordRandom()">生成</button>
+                </form>
+
+                <form>
+                    <div class="form-group">
+                        <label for="info">生成不重复随机字母:</label>
+                        <input type="text" class="form-control" id="num2" placeholder="生成数量">
+                        <label for="info">结果:</label>
+                        <input type="text" class="form-control" id="answer2" placeholder="">
+                    </div>
+                    <button type="button" class="btn btn-default" onclick="getDiffWordRandom()">生成</button>
+                </form>
+
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <h4>关注图南 ↓ </h4>
+                <div>
+                    <a href="https://blog.csdn.net/yukinorong">图南的csdn</a>
+                </div>
+                <div>
+                    <a href="https://github.com/yukinorong">图南的github</a>
+                </div>
+                <div>
+                    <a href="https://yukinorong.github.io">个人博客主页</a>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 

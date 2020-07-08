@@ -10,24 +10,27 @@
     <!-- vue.js -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
-<body>
-    <div class="container">
+<body >
+
+
+    <div class="container" id="vue-app">
+        
         <div class="row">
             <header>
                 <div class="col-sm-3 col-xs-6">
-                    <div style="background-color:#333;height:50px;width:30px">logo</div>
+                    <div style="background-color:#333;height:50px;width:100px">logo</div>
                 </div>
-                <div class="col-sm-6">
-                    <div style="background-color:red;height:50px;width:30px">logo</div>
+                <div class="col-sm-6 hidden-xs">
+                    <div style="background-color:red;height:50px;width:100px">logo</div>
                 </div>
 
                 <div class="col-sm-3 col-xs-6">
-                    <div style="background-color:blue;height:50px;width:30px">logo</div>
+                    <div style="background-color:blue;height:50px;width:100px">logo</div>
                 </div>
             </header>
+        </div>
 
-
-            </div>
+        
             <div class="text-center">
                 <h2>图南的杂七杂八代码（bootstrap + vue）</h2>
             </div>
@@ -35,34 +38,46 @@
             <div>
                 <h4>工具</h4>
             </div>
-            <div>
-                <ul class="list-unstyled">
-                    <li><a href="https://github.com/yukinorong/bili_analyse">b站用户数据分析</a> (py爬虫 + pandas + 协同过滤算法)</li>
-                    
 
-                    <li><a href="getRandom.html">随机数、字母生成器（家庭小游戏必备）</a></li>
-                </ul>
+            <!-- 卡片展示 -->
+            <!-- <div class="panel panel-default">
+              <div class="panel-heading">
+                b站用户数据分析<span class="label label-success">New</span>
+              </div>
+              <div class="panel-body">
+                (py爬虫 + pandas + 协同过滤算法)
+              </div>
+            </div> -->
+
+            <info-panel v-for="a in article" v-bind:title="a.title" v-bind:word="a.word"></info-panel>
+
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    下面施工中。。<del>懒得做</del>
+                </div>
+                <!--           <div class="panel-body">
+                <p>...</p>
+                </div>   --> 
+                <div class="list-group">
+                    <a href="#" class="list-group-item">模板页面不能传html参数</a>
+                    <a href="#" class="list-group-item">js动态读写文件</a>
+                    <a href="#" class="list-group-item">管理员页面</a>
+                    <a href="#" class="list-group-item">写模板</a>
+                    <a href="#" class="list-group-item">vue.js动态生成html</a>
+                    <a href="#" class="list-group-item">记账本工具</a>
+                    <a href="#" class="list-group-item">图南的刷题总结</a>
+                    <a href="#" class="list-group-item">图南的毕业设计路程</a>
+                </div>
             </div>
 
+<!--             <a href="/cgi-bin/account_book/index.py">记账本工具</a> cookie版 (apache + python + mysql) <br> -->
 
-
-            <div>
-                <h4>下面施工中。。<del>懒得做</del></h4>
-            </div>
-
-            todo:1.js动态生成html, 2. js动态读写文件。3.管理员页面。 4.写模板。
-            <div>
-            <a href="/cgi-bin/account_book/index.py">记账本工具</a> cookie版 (apache + python + mysql) <br>
-        </div>
-        <div>
-            <a href="vuetest.html">vue.js的探索</a> 
-        </div>
-        <div>
+<!--         <div>
             <a href="error.html">图南的刷题总结</a> (c/c++/py语言基础，算法/数据结构，计网等）
         </div>
         <div>
             <a href="error.html">图南的毕业设计路程 </a> (word2vec算法，向量机)
-        </div>
+        </div> -->
 
             <address>
                 <strong>关注图南 ↓ ↓ ↓ </strong><br>
@@ -70,40 +85,34 @@
                 <a href="https://yukinorong.github.io">个人博客主页 yukinorong.github.io</a><br>
             </address>
         </div>
-        
-
-        
-<!--         <div>
-            <div>
-                <a href="https://github.com/yukinorong/bili_analyse">b站用户数据分析</a> (py爬虫 + pandas + 协同过滤算法)
-                <a href="error.html">博客链接</a> 
-                <a href="error.html">github链接</a>
-            </div>
-            <div>
-               <a href="getRandom.html">随机数、字母生成器（家庭小游戏必备）</a> 
-            </div> -->
-            
-
-  
-
-        <br><br>
-<!-- 
-        <div>下面施工中。。</div>
-        <div>
-            <a href="/cgi-bin/account_book/index.py">记账本工具</a> cookie版 (apache + python + mysql) <br>
-        </div>
-        <div>
-            <a href="error.html">图南的刷题总结</a> (c/c++/py语言基础，算法/数据结构，计网等）
-        </div>
-        <div>
-            <a href="error.html">图南的毕业设计路程 </a> (word2vec算法，向量机)
-        </div> -->
-
-
-        <div>
-
-
-
     </div>
 </body>
+
+<script>
+
+    Vue.component('info-panel', {
+        props:['title','word'],
+        template:'<div class="panel panel-default">\
+              <div class="panel-heading">\
+                {{title}}\
+              </div>\
+              <div class="panel-body">\
+                {{word}}\
+              </div>\
+            </div>'
+    })
+
+    new Vue({
+        el: '#vue-app',
+        data : {
+            article:[
+                {title:'b站用户数据分析<span class="label label-success">New</span>',word:' (py爬虫 + pandas + 协同过滤算法)'},
+                {title:'随机数、字母生成器',word:'（家庭小游戏必备）'},
+            ]
+        }
+    })
+
+</script>
+
+
 </html>
