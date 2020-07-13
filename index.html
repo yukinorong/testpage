@@ -11,11 +11,22 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body >
-
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div  class="navbar-header">
+              <a class="" href="#">
+                <img alt="logo" src="./img/logo450x100.png" width="40%" >
+              </a>
+            </div>
+            <p class="navbar-text navbar-right hidden-xs">
+                关注 <a href="https://github.com/yukinorong" class="navbar-link">图南yukino</a>
+            </p>
+        </div>
+    </nav>
 
     <div class="container" id="vue-app">
-        
-        <div class="row">
+
+<!--         <div class="row">
             <header>
                 <div class="col-sm-3 col-xs-6">
                     <div style="background-color:#333;height:50px;width:100px">logo</div>
@@ -28,7 +39,7 @@
                     <div style="background-color:blue;height:50px;width:100px">logo</div>
                 </div>
             </header>
-        </div>
+        </div> -->
 
         
             <div class="text-center">
@@ -49,7 +60,13 @@
               </div>
             </div> -->
 
-            <info-panel v-for="a in article" v-bind:title="a.title" v-bind:word="a.word"></info-panel>
+            <info-panel 
+                v-for="a in article" 
+                :title="a.title" 
+                :word="a.word" 
+                :href="a.href" 
+                :span="a.span">
+            </info-panel>
 
             <div class="panel panel-danger">
                 <div class="panel-heading">
@@ -81,8 +98,9 @@
 
             <address>
                 <strong>关注图南 ↓ ↓ ↓ </strong><br>
-                <a href="https://blog.csdn.net/yukinorong">图南的csdn blog.csdn.net/yukinorong</a><br>
-                <a href="https://yukinorong.github.io">个人博客主页 yukinorong.github.io</a><br>
+                <a href="https://blog.csdn.net/yukinorong">图南的csdn</a><br>
+                <a href="https://yukinorong.github.io">个人博客主页</a><br>
+                <a href="https://github.com/yukinorong">github主页</a><br>
             </address>
         </div>
     </div>
@@ -91,25 +109,26 @@
 <script>
 
     Vue.component('info-panel', {
-        props:['title','word'],
+        props:['title','word','href'],
         template:'<div class="panel panel-default">\
-              <div class="panel-heading">\
-                {{title}}\
-              </div>\
-              <div class="panel-body">\
+              <div class="panel-heading" v-html=title></div>\
+              <a :href="href" class="panel-body list-group-item">\
                 {{word}}\
-              </div>\
+              </a>\
             </div>'
     })
 
     new Vue({
         el: '#vue-app',
-        data : {
-            article:[
-                {title:'b站用户数据分析<span class="label label-success">New</span>',word:' (py爬虫 + pandas + 协同过滤算法)'},
-                {title:'随机数、字母生成器',word:'（家庭小游戏必备）'},
-            ]
+        data : function() {
+            return {
+                article:[
+                    {title:'b站用户数据分析 <span class="label label-success">New</span>',word:' (py爬虫 + pandas + 协同过滤算法)',href:'https://github.com/yukinorong/bili_analyse'},
+                    {title:'随机数、字母生成器 <span class="label label-danger">Hot</span>',word:'（家庭小游戏必备）',href:'./getRandom.html'},
+                ]
+            }
         }
+        
     })
 
 </script>
