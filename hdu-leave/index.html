@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>杭电助手</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="./moment.js"></script>
+</head>
+<body>
+  <div class="bg bg-1"></div>
+  <div class="bg bg-2"></div>
+  <div class="con">
+    <p class="title">学生离校请假</p>
+    <div class="li li-1">
+      <p class="li-1-p1">学生离校请假</p>
+      <p class="li-1-p2">已通过</p>
+    </div>
+    <div class="li li-2">
+      <div><img class="code" src="./code.png" alt=""></div>
+      <div class="time"></div>
+    </div>
+    <div class="li li-3"><img class="img1" src="./1.png" alt=""></div>
+    <div class="li li-4">
+      <div class="li-4-p1">请假开始时间 (必填)</div>
+      <div class="li-4-p2">离开学校的日期</div>
+      <div class="gray-time"></div>
+    </div>
+    <div class="li li-5">
+      <div class="li li-4">
+        <div class="li-4-p1">请假结束时间 (必填)</div>
+        <div class="li-4-p2">返回学校的日期</div>
+        <div class="gray-time"></div>
+      </div>
+    </div>
+    <div class="li li-6"><img class="img2" src="./2.png" alt=""></div>
+  </div>
+  <script>
+    setInterval(() => {
+      moment.locale('zh-cn');
+      let now = new Date();
+      let month = now.getMonth()+1
+      let date =  now.getDate()
+      let t = moment().locale('zh-cn').format('a h:mm:ss');
+      console.log(t)
+      let time = document.getElementsByClassName('time')[0];
+      time.innerHTML = `当前时间：${month}月${date}日${t}`
+      let gray1 = document.getElementsByClassName('gray-time')[0];
+      gray1.innerHTML = `2020年${month}月${date}日`
+      let gray2 = document.getElementsByClassName('gray-time')[1];
+      gray2.innerHTML = `2020年${month}月${date}日`
+    },1000)
+    
+    
+  </script>
+</body>
+</html>
